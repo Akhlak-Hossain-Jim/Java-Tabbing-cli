@@ -10,7 +10,7 @@ Saykat Kumar Debnath
 Nubah Nashita Farihat
 Asif Iqbal
 BUDS
-BUDS দ্রোহ
+BUDS দ�?রোহ
 Masum Mahmud 
 Rafiqul Islam Eamin
 Sieum Zaman
@@ -90,7 +90,7 @@ Tamanna Jahan Eva
 Wasit Zawad Ismam 
 Atik
 PUDS
-PUDS সাম্পান
+PUDS সাম�?পান
 Shakib Hossain 
 Tanmoy Barua 
 FAM Ayon
@@ -120,17 +120,17 @@ Abdullah Al Habib Badhon
 Ismail Safa 
 Nafisul Islam Shifa
 JU
-জেইউডিও মুক্তমঞ্চ
+জেইউডিও ম�?ক�?তমঞ�?চ
 Md. Zahidul Islam 
 Tanvir Morshed Tamim
 Sadat Ibna Islam
 JKKNIUDS
-বিদ্রোহী
+বিদ�?রোহী
 Golam Kibria 
 Atia Sharmila Akhi
 Shuvo Ahmed
 MUDS
-মেরিটাইম অপ্রতিরোধ্য 
+মেরিটাইম অপ�?রতিরোধ�?য 
 Md. Rifadul Islam
 Md. Hamid Malik 
 Muhammad - Bin - Ashraf
@@ -138,14 +138,13 @@ JU
 JUDS SHANGSHAPTAK
 Mir Hasibul Hasan Rishad
 Mohammad Obaidullah 
-S M Muwaz 
-
+S M Muwaz
 36
 DCU
 Md. Hasib Khan
 0.8
 JnUDS
-মো. তৌফিকুল ইসলাম হৃদয়
+মো. তৌফিক�?ল ইসলাম হৃদয়
 0.8
 UIUDC
 MM Tasnim 
@@ -188,64 +187,64 @@ Nik
 0.8
 DU
 Sanjana Afrin Aishy
-0.5
+0.8
 BUTEX
 Mirazul Islam Chowdhury 
-0.5
+0.8
 RUETDC
 Irteza Nur Alba
-0.5
+0.8
 BNDP
 Md Shahidul Islam
-0.5
+0.8
 NSTUDS 
 মোঃ ফাহাদ হোসেন 
-0.5
+0.8
 PUDS
 Shakib Hossain 
-0.5
+0.8
 FDF
 Aynul islam Ayon
-0.5
+0.8
 DCU
 Md Mozzammel Masum 
-0.5
+0.8
 BRUDF
 Shanim Ahmmed
-0.5
+0.8
 CUDS
 Syed Shahriar Rahman 
-0.5
+0.8
 SUDS
 Rownak Jahan Mona
-0.5
+0.8
 SBMCDF
 Naima Zaman Suti
-0.5
+0.8
 EWUDC
 Swamitra Ghosh 
-0.5
+0.8
 BRU
 Sabbir Istiak Ahmed
-0.5
+0.8
 DUDS
 Ummay Suhala 
-0.5
+0.8
 SUDS
 Shadman Shakib
-0.3
+0.8
 BGPSC
 Sadia Islam Rimi 
-0.3
+0.8
 DCN, DCDS
 Md. Arman Hossain
-0.3
+0.8
 DCDS
 Ruhan
-0.3
+0.8
 BSMRSTU 
 Md. Emon Hossain 
-0.3
+0.8
 KNGC DC
 Mahbubr Rahman 
-0.3
+0.8
