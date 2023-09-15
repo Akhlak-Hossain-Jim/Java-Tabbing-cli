@@ -4,7 +4,7 @@ public class Adjudicator extends Participants {
     private String as = "Adjudicator";
     private double initialPoint;
 
-    private Score score;
+    private Score score = new Score();
 
     public Adjudicator() {
     }
