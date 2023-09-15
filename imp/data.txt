@@ -1,0 +1,251 @@
+28
+AUSTDC
+AUSTDC Satkahon
+Mithila
+Saif
+Hamim Inteser 
+BAUDS
+BAUDS Bijoy 71
+Saykat Kumar Debnath
+Nubah Nashita Farihat
+Asif Iqbal
+BUDS
+BUDS দ্রোহ
+Masum Mahmud 
+Rafiqul Islam Eamin
+Sieum Zaman
+BUPDC
+BUP 01
+Zil Jawsan 
+Alvi Tonoy
+Arafat limon 
+BUTEXDC
+BUTEXDC Bunon
+Avishek
+Ahnaf Sharar Hossain
+Barshan
+CU
+CUDS A
+Tanzim Ahamed
+Mehedi Hasan Emon 
+Arafat Hossain 
+CU
+CUDS B
+Rajiur Rahman Arif 
+Ratul Sheikh 
+Rayhan Ahamed Chowdhury 
+CU
+DCU
+Seikh Sadia Siddiqua
+Md. Mozzammel Masum
+Md. Mushfiqur Rahman
+DIUDC
+DIUDC নকশাল
+Md. Fahim Shakil 
+Aunirudra Dey
+Minhajul Monowar
+DU
+DUDS
+Mobin Mojumder 
+Asif Rahman 
+Samdani Prottoy 
+EWUDC
+EWUDC Spares
+Ayez Bin Faruque 
+Maruf Hasan Prince 
+Nayemur Rahman 
+HSTUDS
+HSTU-DS
+Nobel Mahfuz 
+Rabiul Islam Rokon
+Yeamin Faria
+DFI
+IUBAT Multiverse 03
+Nowrin
+Jaba
+Shara
+JnU
+JnUDS Muktijuddher Prostuti
+Md.Zuhayer Islam
+Susmita Banik 
+Md.Shohel Rana
+RCMDC
+Mirror 71
+Sabbir Ahmed Biswas
+Shahriar Al Zubayer
+Shahariar Kabir Shekhor
+MISTDS
+MISTDS 01
+Md. Abdullah Al - Mashrif
+Fatima Ashraf Abiha 
+Mumtahina Rahman Medha 
+MIUDC
+MIUDC Team 
+Nushrat Naseer Bushra  
+Mishila Marowa
+Md.Sagor Mia 
+NSU
+NSU NAC
+Tamanna Jahan Eva
+Wasit Zawad Ismam 
+Atik
+PUDS
+PUDS সাম্পান
+Shakib Hossain 
+Tanmoy Barua 
+FAM Ayon
+RU
+RUDF B 
+Anabil Chakma
+Akib hossain
+Rifat Hossain 
+RU
+RUDO - Comets of Logic 
+Mishad Islam
+Ashraful Islam Sondhi
+Nishat Tasnim Mredula 
+RUETDC
+RUETdc Einstein 
+Ahnaf Tanjid
+Muyeen Ahmad 
+Irteza Nur Alba
+SDF
+SDF Neo
+Md. Al Amin
+Siam Hasan
+Noor Hasan
+UIUDC
+UIU White
+Abdullah Al Habib Badhon 
+Ismail Safa 
+Nafisul Islam Shifa
+JU
+জেইউডিও মুক্তমঞ্চ
+Md. Zahidul Islam 
+Tanvir Morshed Tamim
+Sadat Ibna Islam
+JKKNIUDS
+বিদ্রোহী
+Golam Kibria 
+Atia Sharmila Akhi
+Shuvo Ahmed
+MUDS
+মেরিটাইম অপ্রতিরোধ্য 
+Md. Rifadul Islam
+Md. Hamid Malik 
+Muhammad - Bin - Ashraf
+JU
+JUDS SHANGSHAPTAK
+Mir Hasibul Hasan Rishad
+Mohammad Obaidullah 
+S M Muwaz 
+
+36
+DCU
+Md. Hasib Khan
+0.8
+JnUDS
+মো. তৌফিকুল ইসলাম হৃদয়
+0.8
+UIUDC
+MM Tasnim 
+0.8
+CUSD
+Sadaf
+0.8
+BUTEXDC
+Dipu
+0.8
+PUDS
+Soumen Sarker
+0.8
+JUDO
+Farhan Anjum
+0.8
+KDS
+Hridoy
+0.8
+JnUDS
+Sobuj Raihan
+0.8
+JnUDS 
+Sharmin Sultana Nishi 
+0.8
+RU
+Sadhan Mukherjee 
+0.8
+DUDS
+Tahmid Al Muddassir Chowdhury 
+0.8
+JUDO
+Shafi Mahmud Sagor
+0.8
+JUDO
+Zillal Hossain Sourav
+0.8
+PUDS
+Nik
+0.8
+DU
+Sanjana Afrin Aishy
+0.5
+BUTEX
+Mirazul Islam Chowdhury 
+0.5
+RUETDC
+Irteza Nur Alba
+0.5
+BNDP
+Md Shahidul Islam
+0.5
+NSTUDS 
+মোঃ ফাহাদ হোসেন 
+0.5
+PUDS
+Shakib Hossain 
+0.5
+FDF
+Aynul islam Ayon
+0.5
+DCU
+Md Mozzammel Masum 
+0.5
+BRUDF
+Shanim Ahmmed
+0.5
+CUDS
+Syed Shahriar Rahman 
+0.5
+SUDS
+Rownak Jahan Mona
+0.5
+SBMCDF
+Naima Zaman Suti
+0.5
+EWUDC
+Swamitra Ghosh 
+0.5
+BRU
+Sabbir Istiak Ahmed
+0.5
+DUDS
+Ummay Suhala 
+0.5
+SUDS
+Shadman Shakib
+0.3
+BGPSC
+Sadia Islam Rimi 
+0.3
+DCN, DCDS
+Md. Arman Hossain
+0.3
+DCDS
+Ruhan
+0.3
+BSMRSTU 
+Md. Emon Hossain 
+0.3
+KNGC DC
+Mahbubr Rahman 
+0.3
