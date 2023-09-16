@@ -34,9 +34,9 @@ public class Components {
 				System.out.println("\tBreaking Teams:");
 				System.out.println();
 				System.out.println("\t\t1. Name: "+Teams.get(Teams.size()-1).getName()+"\t\twith: "+Teams.get(Teams.size()-1).getWins()+" wins & "+Teams.get(Teams.size()-1).getTotalScore()+" team score");
-				System.out.println("\t\t1. Name: "+Teams.get(Teams.size()-2).getName()+"\t\twith: "+Teams.get(Teams.size()-2).getWins()+" wins & "+Teams.get(Teams.size()-2).getTotalScore()+" team score");
-				System.out.println("\t\t1. Name: "+Teams.get(Teams.size()-3).getName()+"\t\twith: "+Teams.get(Teams.size()-3).getWins()+" wins & "+Teams.get(Teams.size()-3).getTotalScore()+" team score");
-				System.out.println("\t\t1. Name: "+Teams.get(Teams.size()-4).getName()+"\t\twith: "+Teams.get(Teams.size()-4).getWins()+" wins & "+Teams.get(Teams.size()-4).getTotalScore()+" team score");
+				System.out.println("\t\t2. Name: "+Teams.get(Teams.size()-2).getName()+"\t\twith: "+Teams.get(Teams.size()-2).getWins()+" wins & "+Teams.get(Teams.size()-2).getTotalScore()+" team score");
+				System.out.println("\t\t3. Name: "+Teams.get(Teams.size()-3).getName()+"\t\twith: "+Teams.get(Teams.size()-3).getWins()+" wins & "+Teams.get(Teams.size()-3).getTotalScore()+" team score");
+				System.out.println("\t\t4. Name: "+Teams.get(Teams.size()-4).getName()+"\t\twith: "+Teams.get(Teams.size()-4).getWins()+" wins & "+Teams.get(Teams.size()-4).getTotalScore()+" team score");
 				System.out.println();
 				Components.delay(()->System.out.println("\t::::::Break Generated"), 700);
 				break;
@@ -44,10 +44,10 @@ public class Components {
 			case "team":{
 				System.out.println();
 				System.out.println("\tTeam Rank:");
-				int i=1;
-				for(Team el: Teams) {
-					System.out.println("\t\t"+i+". Name: "+el.getName()+"\t\twith: "+el.getWins()+" wins & "+el.getTotalScore()+" team score");
-					i++;
+				int j=1;
+				for(int i=Teams.size()-1;i>=0;i++) {
+					System.out.println("\t\t"+j+". Name: "+Teams.get(i).getName()+"\t\twith: "+Teams.get(i).getWins()+" wins & "+Teams.get(i).getTotalScore()+" team score");
+					j++;
 				}
 				System.out.println();
 				break;
@@ -55,10 +55,10 @@ public class Components {
 			case "adj":{
 				System.out.println();
 				System.out.println("\tAdjudicator Rank:");
-				int i=1;
-				for(Adjudicator el: Adj) {
-					System.out.println("\t\t"+i+". Name: "+el.getName()+"\t\twith: "+el.getTotalScore()+" points.");
-					i++;
+				int j=1;
+				for(int i=Adj.size()-1;i>=0;i++) {
+					System.out.println("\t\t"+j+". Name: "+Adj.get(i).getName()+"\t\twith: "+Adj.get(i).getTotalScore()+" points.");
+					j++;
 				}
 				System.out.println();
 				break;
@@ -323,7 +323,7 @@ public class Components {
 				DataOutputStream writer = new DataOutputStream(fo);
 				writer.writeUTF(name);
 				writer.close();
-				delay(() -> System.out.println("******Successfully Created " + name + " tournament"), 2000);
+				delay(() -> System.out.println("\t******Successfully Created " + name + " tournament"), 2000);
 				smallGap();
 				return "next";
 			} catch (Exception e) {
