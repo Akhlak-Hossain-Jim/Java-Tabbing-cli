@@ -121,7 +121,7 @@ public class Main {
 					String AN = TerminalInput.nextLine();
 					Double AiP = -1.0;
 					while (AiP < 0) {
-						System.out.print("\tEnter Adjudicator's initial point: ");
+						System.out.print("\tEnter Adjudicator's initial point(decimal between 0.0-0.9): ");
 						AiP = NumberInput.isDouble(TerminalInput);
 					}
 					PARTICIPANTS.add(new Adjudicator(AN, AI, AiP));
