@@ -21,6 +21,10 @@ public class Adjudicator extends Participants {
     public Score getScore() {
         return score;
     }
+    
+    public int getTotalScore() {
+        return score.getTotalScores();
+    }
 
     public void display() {
         System.out.println("\t" + super.getName() + "\t\t" + as + "\t\t" + super.getInstitution());
