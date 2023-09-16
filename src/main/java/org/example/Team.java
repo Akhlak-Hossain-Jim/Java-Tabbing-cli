@@ -28,21 +28,22 @@ public class Team {
     public Score getScore() {
         return this.score;
     }
-    
+
     public int getTotalScore() {
         return this.score.getTotalScores();
     }
-    
+
     public int getWins() {
         return this.score.getWins();
     }
 
     public void display() {
-        System.out.println("\t" + this.name +"\t" +this.score.toString());
+        System.out.println("\t" + this.name + "\t" + this.score.toString());
     }
 
     public String toString() {
-        return "\t" + this.name + "\t" + this.institution + "\t" + this.Members.get(0).getName() + "\t" + this.Members.get(1).getName()
+        return "\t" + this.name + "\t" + this.institution + "\t" + this.Members.get(0).getName() + "\t"
+                + this.Members.get(1).getName()
                 + "\t" + this.Members.get(2).getName();
     }
 }

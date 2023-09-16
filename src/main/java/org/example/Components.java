@@ -15,49 +15,59 @@ interface Ann {
 }
 
 public class Components {
-	
+
 	public static void RankGenerate(ArrayList<Team> Ta, ArrayList<Adjudicator> Aa, String ty) {
-		ArrayList<Team> Teams= Ta;
+		ArrayList<Team> Teams = Ta;
 		ArrayList<Adjudicator> Adj = Aa;
 		Comparator<Team> comparator = Comparator.comparingInt(Team::getTotalScore);
-	   	Collections.sort(Teams, comparator);
-	   	Comparator<Team> comparator2 = Comparator.comparingInt(Team::getWins);
-	   	Collections.sort(Teams, comparator2);
-	   	Comparator<Adjudicator> comparatorA = Comparator.comparingDouble(Adjudicator::getTotalScore);
-	   	Collections.sort(Adj, comparatorA);
-	   	
-        switch (ty) {
+		Collections.sort(Teams, comparator);
+		Comparator<Team> comparator2 = Comparator.comparingInt(Team::getWins);
+		Collections.sort(Teams, comparator2);
+		Comparator<Adjudicator> comparatorA = Comparator.comparingDouble(Adjudicator::getTotalScore);
+		Collections.sort(Adj, comparatorA);
+
+		switch (ty) {
 			case "break": {
 				System.out.println();
 				System.out.println("\t:.....Generating Break");
 				System.out.println();
 				System.out.println("\tBreaking Teams:");
 				System.out.println();
-				System.out.println("\t\t1. Name: "+Teams.get(Teams.size()-1).getName()+"\t\twith: "+Teams.get(Teams.size()-1).getWins()+" wins & "+Teams.get(Teams.size()-1).getTotalScore()+" team score");
-				System.out.println("\t\t2. Name: "+Teams.get(Teams.size()-2).getName()+"\t\twith: "+Teams.get(Teams.size()-2).getWins()+" wins & "+Teams.get(Teams.size()-2).getTotalScore()+" team score");
-				System.out.println("\t\t3. Name: "+Teams.get(Teams.size()-3).getName()+"\t\twith: "+Teams.get(Teams.size()-3).getWins()+" wins & "+Teams.get(Teams.size()-3).getTotalScore()+" team score");
-				System.out.println("\t\t4. Name: "+Teams.get(Teams.size()-4).getName()+"\t\twith: "+Teams.get(Teams.size()-4).getWins()+" wins & "+Teams.get(Teams.size()-4).getTotalScore()+" team score");
+				System.out.println("\t\t1. Name: " + Teams.get(Teams.size() - 1).getName() + "\t\twith: "
+						+ Teams.get(Teams.size() - 1).getWins() + " wins & "
+						+ Teams.get(Teams.size() - 1).getTotalScore() + " team score");
+				System.out.println("\t\t2. Name: " + Teams.get(Teams.size() - 2).getName() + "\t\twith: "
+						+ Teams.get(Teams.size() - 2).getWins() + " wins & "
+						+ Teams.get(Teams.size() - 2).getTotalScore() + " team score");
+				System.out.println("\t\t3. Name: " + Teams.get(Teams.size() - 3).getName() + "\t\twith: "
+						+ Teams.get(Teams.size() - 3).getWins() + " wins & "
+						+ Teams.get(Teams.size() - 3).getTotalScore() + " team score");
+				System.out.println("\t\t4. Name: " + Teams.get(Teams.size() - 4).getName() + "\t\twith: "
+						+ Teams.get(Teams.size() - 4).getWins() + " wins & "
+						+ Teams.get(Teams.size() - 4).getTotalScore() + " team score");
 				System.out.println();
-				Components.delay(()->System.out.println("\t::::::Break Generated"), 700);
+				Components.delay(() -> System.out.println("\t::::::Break Generated"), 700);
 				break;
 			}
-			case "team":{
+			case "team": {
 				System.out.println();
 				System.out.println("\tTeam Rank:");
-				int j=1;
-				for(int i=Teams.size()-1;i>=0;i++) {
-					System.out.println("\t\t"+j+". Name: "+Teams.get(i).getName()+"\t\twith: "+Teams.get(i).getWins()+" wins & "+Teams.get(i).getTotalScore()+" team score");
+				int j = 1;
+				for (int i = Teams.size() - 1; i >= 0; i++) {
+					System.out.println("\t\t" + j + ". Name: " + Teams.get(i).getName() + "\t\twith: "
+							+ Teams.get(i).getWins() + " wins & " + Teams.get(i).getTotalScore() + " team score");
 					j++;
 				}
 				System.out.println();
 				break;
 			}
-			case "adj":{
+			case "adj": {
 				System.out.println();
 				System.out.println("\tAdjudicator Rank:");
-				int j=1;
-				for(int i=Adj.size()-1;i>=0;i++) {
-					System.out.println("\t\t"+j+". Name: "+Adj.get(i).getName()+"\t\twith: "+Adj.get(i).getTotalScore()+" points.");
+				int j = 1;
+				for (int i = Adj.size() - 1; i >= 0; i++) {
+					System.out.println("\t\t" + j + ". Name: " + Adj.get(i).getName() + "\t\twith: "
+							+ Adj.get(i).getTotalScore() + " points.");
 					j++;
 				}
 				System.out.println();
@@ -65,22 +75,22 @@ public class Components {
 			}
 			default:
 				break;
-        }
+		}
 	}
 
 	public static ArrayList<Team> TopGenerate(ArrayList<Team> Ta, int n) {
-		ArrayList<Team> Teams= Ta;
+		ArrayList<Team> Teams = Ta;
 		Comparator<Team> comparator = Comparator.comparingInt(Team::getTotalScore);
-	   	Collections.sort(Teams, comparator);
-	   	Comparator<Team> comparator2 = Comparator.comparingInt(Team::getWins);
-	   	Collections.sort(Teams, comparator2);
-	   	
-	   	ArrayList<Team> rTeams=new ArrayList<Team>();
-	   	
-	   	for(int i=1;i<=n;i++) {
-	   		rTeams.add(Teams.get(Teams.size()-i));
-	   	}
-	   	return rTeams;
+		Collections.sort(Teams, comparator);
+		Comparator<Team> comparator2 = Comparator.comparingInt(Team::getWins);
+		Collections.sort(Teams, comparator2);
+
+		ArrayList<Team> rTeams = new ArrayList<Team>();
+
+		for (int i = 1; i <= n; i++) {
+			rTeams.add(Teams.get(Teams.size() - i));
+		}
+		return rTeams;
 	}
 
 	public static void ResultOptions(Round cr, int ra) {
@@ -161,7 +171,7 @@ public class Components {
 			System.out.println("\tName");
 			System.out.println();
 			for (Participants dis : Pa) {
-				System.out.println("\t"+dis.getInstitution());
+				System.out.println("\t" + dis.getInstitution());
 			}
 			System.out.println();
 		} else {
@@ -293,7 +303,7 @@ public class Components {
 					data.add(a);
 				}
 				file.close();
-				
+
 				if (!data.contains(name)) {
 					FileOutputStream fo = new FileOutputStream(fRef);
 					DataOutputStream writer = new DataOutputStream(fo);
@@ -307,7 +317,7 @@ public class Components {
 					delay(() -> System.err.println("\t******Tournament " + name + " Already Exists."), 500);
 					System.out.println("\t******Redirecting you to " + name);
 				}
-				
+
 				smallGap();
 				return "next";
 			} catch (Exception e) {
@@ -354,18 +364,18 @@ public class Components {
 		}
 	}
 
-	public static void logo(String s) { 
-		                                                                     
+	public static void logo(String s) {
+
 		System.out.println();
 		switch (s) {
-			case "open":{
+			case "open": {
 				System.out.println(" _ _ _       _                          _        ");
 				System.out.println("| | | | ___ | | ___  ___  _____  ___   | |_  ___ ");
 				System.out.println("| | | || -_|| ||  _|| . ||     || -_|  |  _|| . |");
 				System.out.println("|_____||___||_||___||___||_|_|_||___|  |_|  |___|");
 				break;
 			}
-			case "exit": {			
+			case "exit": {
 				System.out.println(" ___                   __    _  _   _    ___  _      ___       __     ");
 				System.out.println("  |  |_|  /\\  |\\ | |/ (_    |_ / \\ |_)    |  |_) \\_/  |  |\\ | /__     ");
 				System.out.println("  |  | | /--\\ | \\| |\\ __)   |  \\_/ | \\    |  | \\  |  _|_ | \\| \\_| o o");
@@ -394,10 +404,11 @@ public class Components {
 		System.out.println("            | |   | )   ( || )___) )| )___) )___) (___| )  \\  || (___) |");
 		System.out.println("            )_(   |/     \\||/ \\___/ |/ \\___/ \\_______/|/    )_)(_______)");
 	}
-	
+
 	public static void Credit() {
 		System.out.println();
 		System.out.println("\t*****Created and maintained by ©Akhlak Hossain Jim(https://ahjim).*****");
-		System.out.println("\t*****This project is created for Object Oriented Programming Course Project Submission.*****");
+		System.out.println(
+				"\t*****This project is created for Object Oriented Programming Course Project Submission.*****");
 	}
 }
