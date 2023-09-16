@@ -78,7 +78,7 @@ public class Round {
             default:
                 break;
         }
-        System.out.println("\t:::::::::Matchup generation completed for " + RoundNoDisplay());
+        Components.delay(()->System.out.println("\t:::::::::Matchup generation completed for " + RoundNoDisplay()),700);
     }
 
     private String RoundNoDisplay() {
