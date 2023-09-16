@@ -11,6 +11,6 @@ public class Debater extends Participants {
     }
 
     public void display() {
-        System.out.println("\t" + super.getName() + "\t\t" + as + "\t\t" + super.getInstitution());
+        System.out.println("\t" + super.getName() + "\t\t" + this.as + "\t\t" + super.getInstitution());
     }
 }
