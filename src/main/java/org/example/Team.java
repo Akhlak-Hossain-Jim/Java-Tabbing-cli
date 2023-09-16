@@ -28,6 +28,14 @@ public class Team {
     public Score getScore() {
         return score;
     }
+    
+    public int getTotalScore() {
+        return score.getTotalScores();
+    }
+    
+    public int getWins() {
+        return score.getWins();
+    }
 
     public void display() {
         System.out.println("\t" + name + score.toString());
