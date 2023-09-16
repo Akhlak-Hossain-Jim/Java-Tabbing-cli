@@ -21,7 +21,7 @@ public class Adjudicator extends Participants {
     public Score getScore() {
         return this.score;
     }
-    
+
     public double getTotalScore() {
         return this.initialPoint + this.score.getTotalScores();
     }
