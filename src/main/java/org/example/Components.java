@@ -13,6 +13,66 @@ interface Ann {
 }
 
 public class Components {
+	
+	public static void RankGenerate(ArrayList<Team> Ta, ArrayList<Adjudicator> Aa, String ty) {
+		System.out.println();
+		System.out.println("\t:.....Generating Break");
+		ArrayList<Team> Teams= Ta;
+		ArrayList<Adjudicator> Adj = Aa;
+		for (int i = 0; i < Teams.size() - 1; i++) {
+            for (int j = 0; j < Teams.size() - i - 1; j++) {
+                if ((Teams.get(j).getScore().getTotalScores() > Teams.get(j + 1).getScore().getTotalScores()) &&
+                        (Teams.get(j).getScore().getWins() > Teams.get(j + 1).getScore().getWins())) {
+                    Team cpr = Teams.get(j);
+                    Teams.set(i, Teams.get(i + 1));
+                    Teams.set(i + 1, cpr);
+                }
+            }
+        }
+        for (int i = 0; i < Adj.size() - 1; i++) {
+            for (int j = 0; j < Adj.size() - i - 1; j++) {
+                if (Adj.get(j).getScore().getTotalScores() > Adj.get(j + 1).getScore().getTotalScores()) {
+                    Adjudicator cpr = Adj.get(j);
+                    Adj.set(i, Adj.get(i + 1));
+                    Adj.set(i + 1, cpr);
+                }
+            }
+        }
+        switch (ty) {
+			case "break": {
+				Components.delay(()->System.out.println("\t::::::Break Generated"), 700);
+				System.out.println();
+				System.out.println("\tBreaking Teams:");
+				System.out.println();
+				System.out.println("\t\t1. Name: "+Teams.get(Teams.size()-1).getName()+"\t\twith: "+Teams.get(Teams.size()-1).getScore().getWins()+" wins & "+Teams.get(Teams.size()-1).getScore().getTotalScores()+" team score");
+				System.out.println("\t\t1. Name: "+Teams.get(Teams.size()-2).getName()+"\t\twith: "+Teams.get(Teams.size()-2).getScore().getWins()+" wins & "+Teams.get(Teams.size()-2).getScore().getTotalScores()+" team score");
+				System.out.println("\t\t1. Name: "+Teams.get(Teams.size()-3).getName()+"\t\twith: "+Teams.get(Teams.size()-3).getScore().getWins()+" wins & "+Teams.get(Teams.size()-3).getScore().getTotalScores()+" team score");
+				System.out.println("\t\t1. Name: "+Teams.get(Teams.size()-4).getName()+"\t\twith: "+Teams.get(Teams.size()-4).getScore().getWins()+" wins & "+Teams.get(Teams.size()-4).getScore().getTotalScores()+" team score");
+				System.out.println();
+				break;
+			}
+			case "team":{
+				System.out.println();
+				System.out.println("\tTeam Rank:");
+				for(int i = Teams.size()-1;i>0;i++) {
+					System.out.println("\t\t1. Name: "+Teams.get(i).getName()+"\t\twith: "+Teams.get(i).getScore().getWins()+" wins & "+Teams.get(i).getScore().getTotalScores()+" team score");
+				}
+				System.out.println();
+				break;
+			}
+			case "adj":{
+				System.out.println();
+				System.out.println("\tAdjudicator Rank:");
+				for(int i = Adj.size()-1;i>0;i++) {
+					System.out.println("\t\t1. Name: "+Adj.get(i).getName()+"\t\twith: "+Teams.get(i).getScore().getTotalScores()+" points.");
+				}
+				System.out.println();
+				break;
+			}
+			default:
+				break;
+        }
+	}
 
 	public static void ResultOptions(Round cr, int ra) {
 		ArrayList<MatchUp> Matchups = cr.getMatchUps();
@@ -84,15 +144,17 @@ public class Components {
 		System.out.println();
 	}
 
-	public static void DisplayAllInstitutess(ArrayList<Participants> Pa) {
+	public static void DisplayAllInstitutes(ArrayList<Participants> Pa) {
 		System.out.println();
 		if (Pa.size() > 0) {
 			System.out.println("\t******Institutions Perticipated******");
 			System.out.println();
 			System.out.println("\tName");
+			System.out.println();
 			for (Participants dis : Pa) {
-				System.out.println(dis.getInstitution());
+				System.out.println("\t"+dis.getInstitution());
 			}
+			System.out.println();
 		} else {
 			System.err.println("\tNo participants added yet.");
 			System.out.println("\tTry Adding some.");

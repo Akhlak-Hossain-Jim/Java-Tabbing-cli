@@ -236,7 +236,7 @@ public class Main {
 				}
 				case 10: {// Break
 					if (CURRENTROUND > 3) {
-
+						Components.RankGenerate(TEAMS, ADJUDICATORS, "break");
 					} else {
 						System.out.println(
 								"\tBreak only can be generated after All 3 preleminary rounds has been completed.");
@@ -288,22 +288,22 @@ public class Main {
 				}
 				case 13: {// Team Rank
 					if (CURRENTROUND > 3) {
-
+						Components.RankGenerate(TEAMS, ADJUDICATORS, "team");
 					} else {
 						System.out.println(
 								"\tAfter All 3 preleminary round is completion you will be able to see the Team rank here.");
-						AppShifter = 3;
 					}
+					AppShifter = 3;
 					break;
 				}
 				case 14: {// Adj Rank
 					if (CURRENTROUND > 3) {
-
+						Components.RankGenerate(TEAMS, ADJUDICATORS, "adj");
 					} else {
 						System.out.println(
 								"\tAfter All 3 preleminary round is completion you will be able to see the Adjudicator rank here.");
-						AppShifter = 3;
 					}
+					AppShifter = 3;
 					break;
 				}
 				case 15: {// All Participants
@@ -312,6 +312,7 @@ public class Main {
 					break;
 				}
 				case 16: {// All Institution
+					Components.DisplayAllInstitutes(PARTICIPANTS);
 					AppShifter = 3;
 					break;
 				}
