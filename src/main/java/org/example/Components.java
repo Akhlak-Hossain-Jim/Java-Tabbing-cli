@@ -6,6 +6,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 interface Ann {
@@ -15,47 +17,37 @@ interface Ann {
 public class Components {
 	
 	public static void RankGenerate(ArrayList<Team> Ta, ArrayList<Adjudicator> Aa, String ty) {
-		System.out.println();
-		System.out.println("\t:.....Generating Break");
 		ArrayList<Team> Teams= Ta;
 		ArrayList<Adjudicator> Adj = Aa;
-		for (int i = 0; i < Teams.size() - 1; i++) {
-            for (int j = 0; j < Teams.size() - i - 1; j++) {
-                if ((Teams.get(j).getScore().getTotalScores() > Teams.get(j + 1).getScore().getTotalScores()) &&
-                        (Teams.get(j).getScore().getWins() > Teams.get(j + 1).getScore().getWins())) {
-                    Team cpr = Teams.get(j);
-                    Teams.set(i, Teams.get(i + 1));
-                    Teams.set(i + 1, cpr);
-                }
-            }
-        }
-        for (int i = 0; i < Adj.size() - 1; i++) {
-            for (int j = 0; j < Adj.size() - i - 1; j++) {
-                if (Adj.get(j).getScore().getTotalScores() > Adj.get(j + 1).getScore().getTotalScores()) {
-                    Adjudicator cpr = Adj.get(j);
-                    Adj.set(i, Adj.get(i + 1));
-                    Adj.set(i + 1, cpr);
-                }
-            }
-        }
+		Comparator<Team> comparator = Comparator.comparingInt(Team::getTotalScore);
+	   	Collections.sort(Teams, comparator);
+	   	Comparator<Team> comparator2 = Comparator.comparingInt(Team::getWins);
+	   	Collections.sort(Teams, comparator2);
+	   	Comparator<Adjudicator> comparatorA = Comparator.comparingInt(Adjudicator::getTotalScore);
+	   	Collections.sort(Adj, comparatorA);
+	   	
         switch (ty) {
 			case "break": {
-				Components.delay(()->System.out.println("\t::::::Break Generated"), 700);
+				System.out.println();
+				System.out.println("\t:.....Generating Break");
 				System.out.println();
 				System.out.println("\tBreaking Teams:");
 				System.out.println();
-				System.out.println("\t\t1. Name: "+Teams.get(Teams.size()-1).getName()+"\t\twith: "+Teams.get(Teams.size()-1).getScore().getWins()+" wins & "+Teams.get(Teams.size()-1).getScore().getTotalScores()+" team score");
-				System.out.println("\t\t1. Name: "+Teams.get(Teams.size()-2).getName()+"\t\twith: "+Teams.get(Teams.size()-2).getScore().getWins()+" wins & "+Teams.get(Teams.size()-2).getScore().getTotalScores()+" team score");
-				System.out.println("\t\t1. Name: "+Teams.get(Teams.size()-3).getName()+"\t\twith: "+Teams.get(Teams.size()-3).getScore().getWins()+" wins & "+Teams.get(Teams.size()-3).getScore().getTotalScores()+" team score");
-				System.out.println("\t\t1. Name: "+Teams.get(Teams.size()-4).getName()+"\t\twith: "+Teams.get(Teams.size()-4).getScore().getWins()+" wins & "+Teams.get(Teams.size()-4).getScore().getTotalScores()+" team score");
+				System.out.println("\t\t1. Name: "+Teams.get(Teams.size()-1).getName()+"\t\twith: "+Teams.get(Teams.size()-1).getWins()+" wins & "+Teams.get(Teams.size()-1).getTotalScore()+" team score");
+				System.out.println("\t\t1. Name: "+Teams.get(Teams.size()-2).getName()+"\t\twith: "+Teams.get(Teams.size()-2).getWins()+" wins & "+Teams.get(Teams.size()-2).getTotalScore()+" team score");
+				System.out.println("\t\t1. Name: "+Teams.get(Teams.size()-3).getName()+"\t\twith: "+Teams.get(Teams.size()-3).getWins()+" wins & "+Teams.get(Teams.size()-3).getTotalScore()+" team score");
+				System.out.println("\t\t1. Name: "+Teams.get(Teams.size()-4).getName()+"\t\twith: "+Teams.get(Teams.size()-4).getWins()+" wins & "+Teams.get(Teams.size()-4).getTotalScore()+" team score");
 				System.out.println();
+				Components.delay(()->System.out.println("\t::::::Break Generated"), 700);
 				break;
 			}
 			case "team":{
 				System.out.println();
 				System.out.println("\tTeam Rank:");
-				for(int i = Teams.size()-1;i>0;i++) {
-					System.out.println("\t\t1. Name: "+Teams.get(i).getName()+"\t\twith: "+Teams.get(i).getScore().getWins()+" wins & "+Teams.get(i).getScore().getTotalScores()+" team score");
+				int i=1;
+				for(Team el: Teams) {
+					System.out.println("\t\t"+i+". Name: "+el.getName()+"\t\twith: "+el.getWins()+" wins & "+el.getTotalScore()+" team score");
+					i++;
 				}
 				System.out.println();
 				break;
@@ -63,8 +55,10 @@ public class Components {
 			case "adj":{
 				System.out.println();
 				System.out.println("\tAdjudicator Rank:");
-				for(int i = Adj.size()-1;i>0;i++) {
-					System.out.println("\t\t1. Name: "+Adj.get(i).getName()+"\t\twith: "+Teams.get(i).getScore().getTotalScores()+" points.");
+				int i=1;
+				for(Adjudicator el: Adj) {
+					System.out.println("\t\t"+i+". Name: "+el.getName()+"\t\twith: "+el.getTotalScore()+" points.");
+					i++;
 				}
 				System.out.println();
 				break;
@@ -72,6 +66,21 @@ public class Components {
 			default:
 				break;
         }
+	}
+
+	public static ArrayList<Team> TopGenerate(ArrayList<Team> Ta, int n) {
+		ArrayList<Team> Teams= Ta;
+		Comparator<Team> comparator = Comparator.comparingInt(Team::getTotalScore);
+	   	Collections.sort(Teams, comparator);
+	   	Comparator<Team> comparator2 = Comparator.comparingInt(Team::getWins);
+	   	Collections.sort(Teams, comparator2);
+	   	
+	   	ArrayList<Team> rTeams=new ArrayList<Team>();
+	   	
+	   	for(int i=1;i<=n;i++) {
+	   		rTeams.add(Teams.get(Teams.size()-i));
+	   	}
+	   	return rTeams;
 	}
 
 	public static void ResultOptions(Round cr, int ra) {
@@ -166,13 +175,13 @@ public class Components {
 		String[] ops = {
 				"Add Team",
 				"Add Adjudicator",
-				"Import data from a .txt file",
+				"Import data from a .dat file",
 				"Round 1",
 				"Round 2",
 				"Round 3",
-				"Break",
 				"SF Round",
 				"Final",
+				"Break",
 				"Display Team Rank",
 				"Display Adjudicator Rank",
 				"Display Participants",
@@ -259,6 +268,7 @@ public class Components {
 		System.out.println();
 		System.out.println("\t\t1. Create new tournament");
 		System.out.println("\t\t2. Choose from existing tournaments");
+		System.out.println("\t\t9. Exit");
 		System.out.println();
 		System.out.print("\tSelect an option: ");
 	}
@@ -278,20 +288,13 @@ public class Components {
 
 				ArrayList<String> data = new ArrayList<String>();
 
-				int needOf = 1;
-
 				while (file.available() > 0) {
 					String a = file.readUTF();
-					if (a == name) {
-						needOf = 0;
-						System.err.println("HERE");
-						break;
-					}
 					data.add(a);
 				}
 				file.close();
-
-				if (needOf == 1) {
+				
+				if (!data.contains(name)) {
 					FileOutputStream fo = new FileOutputStream(fRef);
 					DataOutputStream writer = new DataOutputStream(fo);
 					for (int i = 0; i < data.size(); i++) {
@@ -302,8 +305,9 @@ public class Components {
 					delay(() -> System.out.println("\t******Successfully Created " + name + " tournament"), 2000);
 				} else {
 					delay(() -> System.err.println("\t******Tournament " + name + " Already Exists."), 500);
-					System.out.println("Redirecting you to " + name);
+					System.out.println("\t******Redirecting you to " + name);
 				}
+				
 				smallGap();
 				return "next";
 			} catch (Exception e) {
@@ -333,7 +337,7 @@ public class Components {
 
 	}
 
-	private static String RoundNoDisplay(int rn) {
+	public static String RoundNoDisplay(int rn) {
 		switch (rn) {
 			case 1:
 				return "Round 1";
@@ -350,13 +354,27 @@ public class Components {
 		}
 	}
 
-	public static void logo() {
-		System.out.println("                                                 ");
-		System.out.println(" _ _ _       _                          _        ");
-		System.out.println("| | | | ___ | | ___  ___  _____  ___   | |_  ___ ");
-		System.out.println("| | | || -_|| ||  _|| . ||     || -_|  |  _|| . |");
-		System.out.println("|_____||___||_||___||___||_|_|_||___|  |_|  |___|");
-		System.out.println("                                                 ");
+	public static void logo(String s) { 
+		                                                                     
+		System.out.println();
+		switch (s) {
+			case "open":{
+				System.out.println(" _ _ _       _                          _        ");
+				System.out.println("| | | | ___ | | ___  ___  _____  ___   | |_  ___ ");
+				System.out.println("| | | || -_|| ||  _|| . ||     || -_|  |  _|| . |");
+				System.out.println("|_____||___||_||___||___||_|_|_||___|  |_|  |___|");
+				break;
+			}
+			case "exit": {			
+				System.out.println(" ___                   __    _  _   _    ___  _      ___       __     ");
+				System.out.println("  |  |_|  /\\  |\\ | |/ (_    |_ / \\ |_)    |  |_) \\_/  |  |\\ | /__     ");
+				System.out.println("  |  | | /--\\ | \\| |\\ __)   |  \\_/ | \\    |  | \\  |  _|_ | \\| \\_| o o");
+				break;
+			}
+			default:
+				break;
+		}
+		System.out.println();
 
 		System.out.println("               ______   _______  ______   _______ _________ _______ ");
 		System.out.println("              (  __  \\ (  ____ \\(  ___ \\ (  ___  )\\__   __/(  ____ \\");
@@ -375,5 +393,11 @@ public class Components {
 		System.out.println("            | |   | (   ) || (  \\ \\ | (  \\ \\    | |   | | \\   || | \\_  )");
 		System.out.println("            | |   | )   ( || )___) )| )___) )___) (___| )  \\  || (___) |");
 		System.out.println("            )_(   |/     \\||/ \\___/ |/ \\___/ \\_______/|/    )_)(_______)");
+	}
+	
+	public static void Credit() {
+		System.out.println();
+		System.out.println("\t*****Created and maintained by ©Akhlak Hossain Jim(https://ahjim).*****");
+		System.out.println("\t*****This project is created for Object Oriented Programming Course Project Submission.*****");
 	}
 }
