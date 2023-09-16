@@ -4,12 +4,12 @@ public abstract class Participants {
     private String name;
     private String Id;
     private String institution;
-    private static int assigner = 0;
+    private static int assigner = 1;
 
-    Participants() {
+    public Participants() {
     }
 
-    Participants(String n, String In) {
+    public Participants(String n, String In) {
         this.name = n;
         this.institution = In;
         if (Participants.assigner < 10) {
@@ -21,15 +21,15 @@ public abstract class Participants {
     }
 
     public String getId() {
-        return Id;
+        return this.Id;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public String getInstitution() {
-        return institution;
+        return this.institution;
     }
 
     public void setInstitution(String institution) {
