@@ -15,18 +15,18 @@ public class Adjudicator extends Participants {
     }
 
     public double getInitialPoint() {
-        return initialPoint;
+        return this.initialPoint;
     }
 
     public Score getScore() {
-        return score;
+        return this.score;
     }
     
-    public int getTotalScore() {
-        return score.getTotalScores();
+    public double getTotalScore() {
+        return this.initialPoint + this.score.getTotalScores();
     }
 
     public void display() {
-        System.out.println("\t" + super.getName() + "\t\t" + as + "\t\t" + super.getInstitution());
+        System.out.println("\t" + super.getName() + "\t\t" + this.as + "\t\t" + super.getInstitution());
     }
 }
