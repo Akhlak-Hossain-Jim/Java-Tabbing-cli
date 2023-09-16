@@ -23,7 +23,7 @@ public class Components {
 	   	Collections.sort(Teams, comparator);
 	   	Comparator<Team> comparator2 = Comparator.comparingInt(Team::getWins);
 	   	Collections.sort(Teams, comparator2);
-	   	Comparator<Adjudicator> comparatorA = Comparator.comparingInt(Adjudicator::getTotalScore);
+	   	Comparator<Adjudicator> comparatorA = Comparator.comparingDouble(Adjudicator::getTotalScore);
 	   	Collections.sort(Adj, comparatorA);
 	   	
         switch (ty) {
