@@ -14,35 +14,35 @@ public class Team {
     public Team(String n, String in, ArrayList<Debater> a) {
         this.name = n;
         this.institution = in;
-        Members = a;
+        this.Members = a;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public String getInstitution() {
-        return institution;
+        return this.institution;
     }
 
     public Score getScore() {
-        return score;
+        return this.score;
     }
     
     public int getTotalScore() {
-        return score.getTotalScores();
+        return this.score.getTotalScores();
     }
     
     public int getWins() {
-        return score.getWins();
+        return this.score.getWins();
     }
 
     public void display() {
-        System.out.println("\t" + name + score.toString());
+        System.out.println("\t" + this.name +"\t" +this.score.toString());
     }
 
     public String toString() {
-        return "\t" + name + "\t" + institution + "\t" + Members.get(0).getName() + "\t" + Members.get(1).getName()
-                + "\t" + Members.get(2).getName();
+        return "\t" + this.name + "\t" + this.institution + "\t" + this.Members.get(0).getName() + "\t" + this.Members.get(1).getName()
+                + "\t" + this.Members.get(2).getName();
     }
 }
