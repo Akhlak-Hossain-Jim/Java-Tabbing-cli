@@ -17,8 +17,8 @@ public class Main {
 		ArrayList<Adjudicator> ADJUDICATORS = new ArrayList<Adjudicator>();
 
 		int CURRENTROUND = 0;
-		// ArrayList<Team> CRTEAMS = new ArrayList<Team>();
-		// ArrayList<Adjudicator> CRADJUDICATORS = new ArrayList<Adjudicator>();
+		 ArrayList<Team> CRTEAMS = new ArrayList<Team>();
+//		 ArrayList<Adjudicator> CRADJUDICATORS = new ArrayList<Adjudicator>();
 		Round[] ROUNDS = new Round[5];
 		boolean[] RoundGenerateState = { false, false, false, false, false };
 		boolean[] RoundMotionState = { false, false, false, false, false };
@@ -32,18 +32,34 @@ public class Main {
 		// temporary variables
 		int selectedRound = 0;
 
-		Components.logo();
+		Components.logo("open");
 		Components.delay(() -> Components.gap(), 1200);
 
 		while (AppRunner) {
 			switch (AppShifter) {
 				case 0: {
 					Components.HomeScreen();
-					int hms = Components.OptionChooser(TerminalInput, 2);
-					AppShifter = hms;
+					int hms = Components.OptionChooser(TerminalInput, 9);
+					switch (hms) {
+					case 1: {
+						AppShifter = 1;
+						break;
+					}
+					case 2: {
+						AppShifter = 2;
+						break;
+					}
+					case 9: {						
+						AppShifter = 404;
+						break;
+					}
+					default:
+						AppShifter = 0;
+						break;
+					}
 					break;
 				}
-				case 1: {
+				case 1: {// create a tournament
 					if (Components.CreateNewTournament(TerminalInput) == "next") {
 						tournamentName = DataReader.ReadBiStr(Consts.tournamentNames)
 								.get(DataReader.ReadBiStr(Consts.tournamentNames).size() - 1);
@@ -53,7 +69,7 @@ public class Main {
 					}
 					break;
 				}
-				case 2: {
+				case 2: {// select a tournament
 					Components.PreviousTournaments();
 					int ets = Components.OptionChooser(TerminalInput,
 							DataReader.ReadBiStr(Consts.tournamentNames).size());
@@ -66,7 +82,7 @@ public class Main {
 					}
 					break;
 				}
-				case 3: {
+				case 3: {// tournament options
 					Components.TournamentOptions(tournamentName);
 					int toh = Components.OptionChooser(TerminalInput, 13);
 					if (toh != 0) {
@@ -180,7 +196,7 @@ public class Main {
 						} else {
 							AppShifter = 3;
 						}
-					} else if (TEAMS.size() > 0) {
+					} else if (TEAMS.size() < 0) {
 						System.err.println("\tAdd some teams to see options.");
 						AppShifter = 3;
 					} else if (TEAMS.size() % 2 != 0) {
@@ -234,17 +250,7 @@ public class Main {
 					}
 					break;
 				}
-				case 10: {// Break
-					if (CURRENTROUND > 3) {
-						Components.RankGenerate(TEAMS, ADJUDICATORS, "break");
-					} else {
-						System.out.println(
-								"\tBreak only can be generated after All 3 preleminary rounds has been completed.");
-						AppShifter = 3;
-					}
-					break;
-				}
-				case 11: {// SF
+				case 10: {// SF
 					selectedRound = 4;
 					if (CURRENTROUND == 3) {
 						Components.RoundOption();
@@ -260,12 +266,12 @@ public class Main {
 						}
 					} else {
 						System.err.println(
-								"\tNeed to finish round " + (CURRENTROUND + 1) + " to access SemiFinal round options.");
+								"\tNeed to finish round " + Components.RoundNoDisplay(CURRENTROUND + 1) + " to access SemiFinal round options.");
 						AppShifter = 3;
 					}
 					break;
 				}
-				case 12: {// Final
+				case 11: {// Final
 					selectedRound = 5;
 					if (CURRENTROUND == 4) {
 						Components.RoundOption();
@@ -281,13 +287,23 @@ public class Main {
 						}
 					} else {
 						System.err.println(
-								"\tNeed to finish round " + (CURRENTROUND + 1) + " to access Final round options.");
+								"\tNeed to finish round " + Components.RoundNoDisplay(CURRENTROUND + 1) + " to access Final round options.");
 						AppShifter = 3;
 					}
 					break;
 				}
+				case 12: {// Break
+					if (CURRENTROUND >= 3) {
+						Components.RankGenerate(TEAMS, ADJUDICATORS, "break");
+					} else {
+						System.out.println(
+								"\tBreak only can be generated after All 3 preleminary rounds has been completed.");
+					}
+					AppShifter = 3;
+					break;
+				}
 				case 13: {// Team Rank
-					if (CURRENTROUND > 3) {
+					if (CURRENTROUND >= 3) {
 						Components.RankGenerate(TEAMS, ADJUDICATORS, "team");
 					} else {
 						System.out.println(
@@ -297,7 +313,7 @@ public class Main {
 					break;
 				}
 				case 14: {// Adj Rank
-					if (CURRENTROUND > 3) {
+					if (CURRENTROUND >= 3) {
 						Components.RankGenerate(TEAMS, ADJUDICATORS, "adj");
 					} else {
 						System.out.println(
@@ -331,8 +347,17 @@ public class Main {
 								System.out.println("\tGo to Display option to Display Match up for round "
 										+ selectedRound + ".\n");
 							} else {
-								ROUNDS[selectedRound - 1] = new Round(selectedRound, TEAMS, ADJUDICATORS);
-								ROUNDS[selectedRound - 1].Generate();
+								if(CURRENTROUND==3) {
+									ROUNDS[selectedRound - 1] = new Round(selectedRound, CRTEAMS, ADJUDICATORS);
+									ROUNDS[selectedRound - 1].Generate();
+								}
+								else if(CURRENTROUND==4) {
+									ROUNDS[selectedRound - 1] = new Round(selectedRound, CRTEAMS, ADJUDICATORS);
+									ROUNDS[selectedRound - 1].Generate();
+								}else {									
+									ROUNDS[selectedRound - 1] = new Round(selectedRound, TEAMS, ADJUDICATORS);
+									ROUNDS[selectedRound - 1].Generate();
+								}
 								RoundGenerateState[selectedRound - 1] = true;
 							}
 							AppShifter = 17;
@@ -389,12 +414,13 @@ public class Main {
 						case 2: {// display motion
 							if (RoundMotionState[selectedRound - 1]) {
 								ROUNDS[selectedRound - 1].displayMotion();
+								AppShifter = 6 + selectedRound;
 							} else {
 								System.out.println("\n\tThe Motion for round " + selectedRound + " has not added yet.");
 								System.out.println(
 										"\tGo to Draw option to Generate Match up for round " + selectedRound + ".\n");
+								AppShifter = 18;
 							}
-							AppShifter = 18;
 							break;
 						}
 						case 9:
@@ -461,8 +487,24 @@ public class Main {
 								if (RoundResultStat[selectedRound - 1] == ROUNDS[selectedRound - 1].getMatchUps()
 										.size()) {
 									CURRENTROUND++;
+									if(CURRENTROUND==3) {
+										CRTEAMS = Components.TopGenerate(TEAMS, 4);
+									}
+									if(CURRENTROUND==4) {
+										CRTEAMS = Components.TopGenerate(CRTEAMS, 2);
+									}
+//									for(Team el: TEAMS) {
+//										System.out.println(el.getScore().getTotalScores());
+//									}
+									System.out.println();
+									System.out.println("\tAll scores for "+Components.RoundNoDisplay(CURRENTROUND)+" is successfully added..");
+									System.out.println("\t"+Components.RoundNoDisplay(CURRENTROUND)+" marked as completed.");
+									System.out.println("\tNow you can access "+Components.RoundNoDisplay(CURRENTROUND+1)+" options.");
+									System.out.println();
+									AppShifter = 3;
+								}else {									
+									AppShifter=19;
 								}
-								AppShifter = 19;
 								break;
 							}
 							case 9:
@@ -477,9 +519,15 @@ public class Main {
 								"\n\tThe Match up for round " + selectedRound + " or Motion has not created yet.");
 						System.out.println("\tGo to Draw option to Generate Match up or Add Motion for round "
 								+ selectedRound + ".\n");
+						AppShifter=3;
 					}
 					break;
 				}
+				case 404:
+					Components.logo("exit");
+					Components.Credit();
+					AppRunner = false;
+					break;
 				default:
 					break;
 			}
