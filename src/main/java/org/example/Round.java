@@ -19,19 +19,19 @@ public class Round {
     }
 
     private void Sorter() {
-    	 Comparator<Team> comparator = Comparator.comparingInt(Team::getTotalScore);
-    	 Collections.sort(Teams, comparator);
-    	 Comparator<Team> comparator2 = Comparator.comparingInt(Team::getWins);
-    	 Collections.sort(Teams, comparator2);
-//    	 for(Team a: Teams) {
-//    		 System.out.println(a.getName()+"\t"+a.getTotalScore()+"\t"+a.getWins());
-//    	 }
-    	 Comparator<Adjudicator> comparatorA = Comparator.comparingInt(Adjudicator::getTotalScore);
-    	 Collections.sort(Adj, comparatorA);
+        Comparator<Team> comparator = Comparator.comparingInt(Team::getTotalScore);
+        Collections.sort(Teams, comparator);
+        Comparator<Team> comparator2 = Comparator.comparingInt(Team::getWins);
+        Collections.sort(Teams, comparator2);
+        // for(Team a: Teams) {
+        // System.out.println(a.getName()+"\t"+a.getTotalScore()+"\t"+a.getWins());
+        // }
+        Comparator<Adjudicator> comparatorA = Comparator.comparingDouble(Adjudicator::getTotalScore);
+        Collections.sort(Adj, comparatorA);
     }
 
     public void Generate() {
-    	System.out.println("\t:........Generating matchup for " + RoundNoDisplay());
+        System.out.println("\t:........Generating matchup for " + Components.RoundNoDisplay(roundNo));
         switch (roundNo) {
             case 1: {
                 int q = 0;
@@ -56,15 +56,15 @@ public class Round {
             case 4: {
                 Sorter();
                 int s = Teams.size();
-                    MatchUps.add(new MatchUp(Teams.get(s-1), Teams.get(s - 2), ("01")));
-                    MatchUps.get(0).AddJudge(Adj.get(Adj.size() - 1));
-                    MatchUps.get(0).AddJudge(Adj.get(Adj.size() - 2));
-                    MatchUps.get(0).AddJudge(Adj.get(Adj.size() - 3));
-                    
-                    MatchUps.add(new MatchUp(Teams.get(s-3), Teams.get(s - 4), ("02")));
-                    MatchUps.get(1).AddJudge(Adj.get(Adj.size() - 4));
-                    MatchUps.get(1).AddJudge(Adj.get(Adj.size() - 5));
-                    MatchUps.get(1).AddJudge(Adj.get(Adj.size() - 6));
+                MatchUps.add(new MatchUp(Teams.get(s - 1), Teams.get(s - 2), ("01")));
+                MatchUps.get(0).AddJudge(Adj.get(Adj.size() - 1));
+                MatchUps.get(0).AddJudge(Adj.get(Adj.size() - 2));
+                MatchUps.get(0).AddJudge(Adj.get(Adj.size() - 3));
+
+                MatchUps.add(new MatchUp(Teams.get(s - 3), Teams.get(s - 4), ("02")));
+                MatchUps.get(1).AddJudge(Adj.get(Adj.size() - 4));
+                MatchUps.get(1).AddJudge(Adj.get(Adj.size() - 5));
+                MatchUps.get(1).AddJudge(Adj.get(Adj.size() - 6));
                 break;
             }
             case 5: {
@@ -78,24 +78,10 @@ public class Round {
             default:
                 break;
         }
-        Components.delay(()->System.out.println("\t:::::::::Matchup generation completed for " + RoundNoDisplay()),700);
-    }
-
-    private String RoundNoDisplay() {
-        switch (roundNo) {
-            case 1:
-                return "Round 1";
-            case 2:
-                return "Round 2";
-            case 3:
-                return "Round 3";
-            case 4:
-                return "Semi Finals";
-            case 5:
-                return "Finals";
-            default:
-                return "";
-        }
+        Components.delay(
+                () -> System.out
+                        .println("\t:::::::::Matchup generation completed for " + Components.RoundNoDisplay(roundNo)),
+                700);
     }
 
     public void displayMatchUp() {
