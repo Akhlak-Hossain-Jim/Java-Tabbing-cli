@@ -53,7 +53,7 @@ public class Components {
 				System.out.println();
 				System.out.println("\tTeam Rank:");
 				int j = 1;
-				for (int i = Teams.size() - 1; i >= 0; i++) {
+				for (int i = Teams.size() - 1; i >= 0; i--) {
 					System.out.println("\t\t" + j + ". Name: " + Teams.get(i).getName() + "\t\twith: "
 							+ Teams.get(i).getWins() + " wins & " + Teams.get(i).getTotalScore() + " team score");
 					j++;
@@ -65,7 +65,7 @@ public class Components {
 				System.out.println();
 				System.out.println("\tAdjudicator Rank:");
 				int j = 1;
-				for (int i = Adj.size() - 1; i >= 0; i++) {
+				for (int i = Adj.size() - 1; i >= 0; i--) {
 					System.out.println("\t\t" + j + ". Name: " + Adj.get(i).getName() + "\t\twith: "
 							+ Adj.get(i).getTotalScore() + " points.");
 					j++;
@@ -195,7 +195,8 @@ public class Components {
 				"Display Team Rank",
 				"Display Adjudicator Rank",
 				"Display Participants",
-				"Display Institutions"
+				"Display Institutions",
+				"Display Champion"
 		};
 
 		System.out.println("\tOptions for '" + name + "'");
