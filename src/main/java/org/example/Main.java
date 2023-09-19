@@ -28,6 +28,7 @@ public class Main {
 		int AppShifter = 0;
 		boolean AppRunner = true;
 		String tournamentName = "";
+		Team CHAMPION = new Team();
 
 		// temporary variables
 		int selectedRound = 0;
@@ -84,8 +85,10 @@ public class Main {
 				}
 				case 3: {// tournament options
 					Components.TournamentOptions(tournamentName);
-					int toh = Components.OptionChooser(TerminalInput, 13);
-					if (toh != 0) {
+					int toh = Components.OptionChooser(TerminalInput, 14);
+					if(toh == 14) {
+						AppShifter = 20;
+					} else if (toh != 0) {
 						AppShifter = toh + 3;
 					} else {
 						AppShifter = 0;
@@ -462,7 +465,17 @@ public class Main {
 									System.out.println("\t*****Gov: " + SaMUp.getGov().getName() + " is the winner.");
 									for (int i = 0; i < TEAMS.size(); i++) {
 										if (TEAMS.get(i).getName() == SaMUp.getGov().getName()) {
-											TEAMS.get(i).getScore().addScore(selectedRound, GovS, 1);
+											if(CURRENTROUND==3) {
+												Team el = TEAMS.get(i);
+												el.getScore().addScore(selectedRound, GovS, 1);
+												CRTEAMS.add(el);
+											}else if(CURRENTROUND==4){
+												Team el = TEAMS.get(i);
+												el.getScore().addScore(selectedRound, GovS, 1);
+												CHAMPION =el;
+											}else {
+												TEAMS.get(i).getScore().addScore(selectedRound, GovS, 1);
+											}
 										}
 									}
 									for (int i = 0; i < TEAMS.size(); i++) {
@@ -480,7 +493,17 @@ public class Main {
 									}
 									for (int i = 0; i < TEAMS.size(); i++) {
 										if (TEAMS.get(i).getName() == SaMUp.getOpp().getName()) {
-											TEAMS.get(i).getScore().addScore(selectedRound, OppS, 1);
+											if(CURRENTROUND==3) {
+												Team el = TEAMS.get(i);
+												el.getScore().addScore(selectedRound, OppS, 1);
+												CRTEAMS.add(el);
+											}else if(CURRENTROUND==4){
+												Team el = TEAMS.get(i);
+												el.getScore().addScore(selectedRound, OppS, 1);
+												CHAMPION =el;
+											}else {												
+												TEAMS.get(i).getScore().addScore(selectedRound, OppS, 1);
+											}
 										}
 									}
 									RoundResultStat[selectedRound - 1]++;
@@ -491,19 +514,25 @@ public class Main {
 									if (CURRENTROUND == 3) {
 										CRTEAMS = Components.TopGenerate(TEAMS, 4);
 									}
-									if (CURRENTROUND == 4) {
-										CRTEAMS = Components.TopGenerate(CRTEAMS, 2);
-									}
+//									if (CURRENTROUND == 4) {
+//										CRTEAMS = Components.TopGenerate(CRTEAMS, 2);
+//									}
 									// for(Team el: TEAMS) {
 									// System.out.println(el.getScore().getTotalScores());
 									// }
 									System.out.println();
-									System.out.println("\tAll scores for " + Components.RoundNoDisplay(CURRENTROUND)
-											+ " is successfully added..");
-									System.out.println(
-											"\t" + Components.RoundNoDisplay(CURRENTROUND) + " marked as completed.");
-									System.out.println("\tNow you can access "
-											+ Components.RoundNoDisplay(CURRENTROUND + 1) + " options.");
+									if (CURRENTROUND == 4) {
+										CRTEAMS = Components.TopGenerate(CRTEAMS, 2);
+										System.out.println("\tThe tournament is is successfully conducted.");
+										System.out.println("\tYou can now see the Champions.");
+									}else {										
+										System.out.println("\tAll scores for " + Components.RoundNoDisplay(CURRENTROUND)
+										+ " is successfully added..");
+										System.out.println(
+												"\t" + Components.RoundNoDisplay(CURRENTROUND) + " marked as completed.");
+										System.out.println("\tNow you can access "
+												+ Components.RoundNoDisplay(CURRENTROUND + 1) + " options.");
+									}
 									System.out.println();
 									AppShifter = 3;
 								} else {
@@ -527,6 +556,21 @@ public class Main {
 					}
 					break;
 				}
+				case 20:
+					if(CURRENTROUND == 5 && CHAMPION!=null) {
+						System.out.println();
+						System.out.println("\t##################################################");
+						System.out.println("\tChampion of the tournament:");
+						System.out.print("\t\t");
+						CHAMPION.display();
+						System.out.println("\t##################################################");
+					}else {
+						System.out.println();
+						System.out.println("\t*****Final round haven't been done yet.*****");
+						System.out.println();
+					}
+					AppShifter = 3;
+					break;
 				case 404:
 					Components.logo("exit");
 					Components.Credit();
