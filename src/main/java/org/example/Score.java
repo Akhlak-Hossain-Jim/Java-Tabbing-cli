@@ -26,10 +26,10 @@ public class Score {
                 wins += wo;
                 break;
             case 4:
-                semifinal = val;
+                semifinal = wo;
                 break;
             case 5:
-                finalScore = val;
+                finalScore = wo;
                 break;
             default:
                 break;
