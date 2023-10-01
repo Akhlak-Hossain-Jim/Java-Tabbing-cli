@@ -2,6 +2,9 @@
 
 \- by [Akhlak Hossain Jim](https://ahjim.com)
 
-## Fixes Needs
+## How to run
 
-1. Need to handle same tournament creation multiple time
+1. Download ['/build/' folder](./build/).
+2. Navigate to the directory.
+3. Open `CLI` on that directory.
+4. Run `java -jar tabbing.jar`.
